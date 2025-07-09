@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
+  <name>protobuf_comm</name>
+  <version>0.9.3</version>
+  <description>Wrapper for protobuf communication using c++</description>
+
+  <maintainer email="viehmann@kbsg.rwth-aachen.de">Tarik Viehmann</maintainer>
+
+  <license>GPL-2.0-or-later</license>
+
+  <buildtool_depend>cmake</buildtool_depend>
+
+  <depend>protobuf-dev</depend>
+  <depend>spdlog</depend>
+  <depend>openssl</depend>
+  <depend>libboost-system-dev</depend>
+  <depend>libboost-thread-dev</depend>
+
+  <export>
+    <build_type>cmake</build_type>
+  </export>
+</package>

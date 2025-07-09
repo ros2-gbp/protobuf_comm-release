@@ -1,0 +1,10 @@
+steps:
+  - label: "Build"
+    plugins:
+      - compono/podman#main:
+          image: registry.fedoraproject.org/fedora:38
+          always-pull: true
+          privileged: true
+    command:
+      - dnf -y --nodocs install cmake gcc-c++ openssl-devel protobuf-devel boost-devel
+      - cmake -B build && cmake --build build -j`nproc`
