@@ -1,0 +1,47 @@
+ros-jazzy-protobuf-comm (0.9.3-1bookworm) bookworm; urgency=high
+
+  * prepare for ROS release
+
+ -- Tarik Viehmann <viehmann@kbsg.rwth-aachen.de>  Tue, 24 Jun 2025 22:00:00 -0000
+
+ros-jazzy-protobuf-comm (0.9.2-1bookworm) bookworm; urgency=high
+
+  * Merge pull request #3 <https://github.com/fawkesrobotics/protobuf_comm/issues/3> from fawkesrobotics/tviehmann/client-disconnect-fix
+    client: disconnect only if not cancelled explicitly
+  * bump version
+  * client: disconnect only if not cancelled explicitly
+  * Contributors: Tarik Viehmann
+
+ -- Tarik Viehmann <viehmann@kbsg.rwth-aachen.de>  Thu, 04 Apr 2024 22:00:00 -0000
+
+ros-jazzy-protobuf-comm (0.9.1-1bookworm) bookworm; urgency=high
+
+  * bump version
+  * buildkite: switch to f38
+  * client: add function to check for outbound msgs
+  * Merge pull request #1 <https://github.com/fawkesrobotics/protobuf_comm/issues/1> from pkohout/main
+    Lower minimum cmake version to 3.10.2
+  * Update minimum cmake version to 3.10.2 to be able to build with default melodic setup.
+  * Add buildkite pipeline
+  * Contributors: Tarik Viehmann, Till Hofmann, pkohout
+
+ -- Tarik Viehmann <viehmann@kbsg.rwth-aachen.de>  Tue, 31 Oct 2023 23:00:00 -0000
+
+ros-jazzy-protobuf-comm (0.9.0-1bookworm) bookworm; urgency=high
+
+  * Ignore compile_commands.json
+  * Generate pkgconfig file
+  * Set SOVERSION to the project's major version
+  * Export and install cmake package files
+  * Add cmake install target
+  * Add CMakeLists.txt to build the project
+  * Remove old Makefile
+  * Move header files into include/
+  * Add LICENSE file
+  * Import protobuf_comm from fawkes without modifications
+  * Initial commit
+  * Contributors: Till Hofmann
+
+ -- Tarik Viehmann <viehmann@kbsg.rwth-aachen.de>  Sat, 26 Jun 2021 22:00:00 -0000
+
+
