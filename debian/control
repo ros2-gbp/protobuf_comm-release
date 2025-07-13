@@ -1,0 +1,12 @@
+Source: ros-rolling-protobuf-comm
+Section: misc
+Priority: optional
+Maintainer: Tarik Viehmann <viehmann@kbsg.rwth-aachen.de>
+Build-Depends: debhelper (>= 9.0.0), cmake, libboost-system-dev, libboost-thread-dev, libprotobuf-dev, libprotoc-dev, libspdlog-dev, openssl, protobuf-compiler, ros-rolling-ros-workspace
+Homepage: 
+Standards-Version: 3.9.2
+
+Package: ros-rolling-protobuf-comm
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, libboost-system-dev, libboost-thread-dev, libprotobuf-dev, libprotoc-dev, libspdlog-dev, openssl, protobuf-compiler, ros-rolling-ros-workspace
+Description: Wrapper for protobuf communication using c++
