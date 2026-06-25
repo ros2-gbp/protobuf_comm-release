@@ -45,72 +45,62 @@ using namespace llsf_msgs;
 
 /// @cond QA
 
-static bool                 quit = false;
+static bool quit = false;
 static ProtobufStreamClient client;
 
-void
-signal_handler(const boost::system::error_code &error, int signum)
-{
-	if (!error) {
-		quit = true;
-	}
-}
-
-void
-connected()
-{
-	/*
-  Person p;
-  p.set_id(1);
-  p.set_name("Tim Niemueller");
-  p.set_email("niemueller@kbsg.rwth-aachen.de");
-  client.send(1, 2, p);
-  */
-}
-
-void
-handle_message(uint16_t comp_id, uint16_t msg_type, std::shared_ptr<google::protobuf::Message> msg)
-{
-	printf("Received message of type %u\n", msg_type);
-	/*
-  std::shared_ptr<Person> p;
-  if ((p = std::dynamic_pointer_cast<Person>(msg))) {
-    printf("Person %i: %s <%s>\n", p->id(), p->name().c_str(), p->email().c_str());
+void signal_handler(const boost::system::error_code &error, int signum) {
+  if (!error) {
+    quit = true;
   }
-  */
 }
 
-int
-main(int argc, char **argv)
-{
-	boost::asio::io_service io_service;
+void connected() {
+  /*
+Person p;
+p.set_id(1);
+p.set_name("Tim Niemueller");
+p.set_email("niemueller@kbsg.rwth-aachen.de");
+client.send(1, 2, p);
+*/
+}
 
-	boost::asio::deadline_timer timer_(io_service);
-	boost::asio::deadline_timer reconnect_timer_(io_service);
-	boost::asio::deadline_timer attmsg_timer_(io_service);
-	boost::asio::deadline_timer blink_timer_(io_service);
+void handle_message(uint16_t comp_id, uint16_t msg_type,
+                    std::shared_ptr<google::protobuf::Message> msg) {
+  printf("Received message of type %u\n", msg_type);
+  /*
+std::shared_ptr<Person> p;
+if ((p = std::dynamic_pointer_cast<Person>(msg))) {
+printf("Person %i: %s <%s>\n", p->id(), p->name().c_str(), p->email().c_str());
+}
+*/
+}
 
-	client.signal_connected().connect(connected);
-	client.async_connect("127.0.0.1", 4444);
+int main(int argc, char **argv) {
+  boost::asio::io_context io_context;
+  boost::asio::steady_timer timer_(io_context);
+  boost::asio::steady_timer reconnect_timer_(io_context);
+  boost::asio::steady_timer attmsg_timer_(io_context);
+  boost::asio::steady_timer blink_timer_(io_context);
+  client.signal_connected().connect(connected);
+  client.async_connect("127.0.0.1", 4444);
 
-	//MessageRegister & message_register = client.message_register();
-	//message_register.add_message_type<Person>(1, 2);
+  // MessageRegister & message_register = client.message_register();
+  // message_register.add_message_type<Person>(1, 2);
 
-	client.signal_received().connect(handle_message);
+  client.signal_received().connect(handle_message);
 
-	// Construct a signal set registered for process termination.
-	boost::asio::signal_set signals(io_service, SIGINT, SIGTERM);
+  // Construct a signal set registered for process termination.
+  boost::asio::signal_set signals(io_context, SIGINT, SIGTERM);
+  // Start an asynchronous wait for one of the signals to occur.
+  signals.async_wait(signal_handler);
 
-	// Start an asynchronous wait for one of the signals to occur.
-	signals.async_wait(signal_handler);
+  do {
+    io_context.run();
+    io_context.restart();
+  } while (!quit);
 
-	do {
-		io_service.run();
-		io_service.reset();
-	} while (!quit);
-
-	// Delete all global objects allocated by libprotobuf
-	google::protobuf::ShutdownProtobufLibrary();
+  // Delete all global objects allocated by libprotobuf
+  google::protobuf::ShutdownProtobufLibrary();
 }
 
 /// @endcond
