@@ -2,6 +2,13 @@
 Changelog for package protobuf_comm
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+0.9.4 (2026-06-25)
+------------------
+* project: switch to "new" boost asio API.
+  The old API was deprecated almost 10 years ago.
+* project: remove obsolete system component
+* Contributors: Tarik Viehmann
+
 0.9.3 (2025-06-25)
 ------------------
 * prepare for ROS release
