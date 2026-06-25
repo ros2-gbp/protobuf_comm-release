@@ -1,3 +1,26 @@
+## protobuf_comm (humble) - 0.9.4-1
+
+The packages in the `protobuf_comm` repository were released into the `humble` distro by running `/home/tviehmann/packaging/bloom/.venv/bin/bloom-release -r humble protobuf_comm` on `Thu, 25 Jun 2026 14:49:23 -0000`
+
+The `protobuf_comm` package was released.
+
+Version of package(s) in repository `protobuf_comm`:
+
+- upstream repository: https://github.com/fawkesrobotics/protobuf_comm.git
+- release repository: unknown
+- rosdistro version: `null`
+- old version: `0.9.3-2`
+- new version: `0.9.4-1`
+
+Versions of tools used:
+
+- bloom version: `0.14.3`
+- catkin_pkg version: `1.1.0`
+- rosdep version: `0.26.0`
+- rosdistro version: `1.0.1`
+- vcstools version: `0.1.42`
+
+
 ## protobuf_comm (kilted) - 0.9.4-1
 
 The packages in the `protobuf_comm` repository were released into the `kilted` distro by running `/home/tviehmann/packaging/bloom/.venv/bin/bloom-release -r kilted protobuf_comm` on `Thu, 25 Jun 2026 14:45:45 -0000`
